@@ -1,0 +1,25 @@
+channels: [,…]
+0: {mature: true, status: "Twitch Application | React/Node | Twitch API | !donate !subscribe !prime",…}
+mature: true
+status: "Twitch Application | React/Node | Twitch API | !donate !subscribe !prime"
+broadcaster_language: "en"
+broadcaster_software: "unknown_rtmp"
+display_name: "Seekaplayer"
+game: "Science & Technology"
+language: "en"
+_id: 25843626
+name: "seekaplayer"
+created_at: "2011-10-31T03:57:05.136545Z"
+updated_at: "2020-03-22T03:53:18.976311Z"
+partner: false
+logo: "https://static-cdn.jtvnw.net/jtv_user_pictures/ac7727af-28c3-4326-a19e-be6ca5347d2e-profile_image-300x300.png"
+video_banner: "https://static-cdn.jtvnw.net/jtv_user_pictures/2ab676f8-cd70-4442-bed5-1ce120096b68-channel_offline_image-1920x1080.jpeg"
+profile_banner: "https://static-cdn.jtvnw.net/jtv_user_pictures/4a7bca5a-17b7-4499-857b-cb86274b321b-profile_banner-480.jpeg"
+profile_banner_background_color: ""
+url: "https://www.twitch.tv/seekaplayer"
+views: 46065
+followers: 2698
+broadcaster_type: "affiliate"
+description: "Welcome to my channel, My name is Seekaplayer and I'm a Gamer, Web Designer/Developer and Graphic Designer. I enjoy Streaming and I hope enjoy the stream also. Follow me on Twitter @seekaplayer"
+private_video: false
+privacy_options_enabled: false
