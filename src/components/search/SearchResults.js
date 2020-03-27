@@ -13,7 +13,6 @@ const SearchResults = ({ user, Alert }) => {
       const userData = await TwitchUserSearch(user);
       if (userData) {
         setResults(userData);
-
         Alert("");
         if (userData.channels.length === 0) {
           Alert("Sorry, that user doesn't exist. Please try again!");
@@ -21,6 +20,7 @@ const SearchResults = ({ user, Alert }) => {
       }
     } else {
       setResults("");
+      Alert("");
     }
   };
   useEffect(() => {

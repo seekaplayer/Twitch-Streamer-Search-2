@@ -6,7 +6,14 @@ const Footer = () => {
       <div className="container">
         <div className="row">
           <div className="col">
-            &copy; {new Date().getFullYear()} Twitch Streamer Search{" "}
+            &copy; {new Date().getFullYear()} Streamer Search, All Rights
+            Reserved.
+            <div className="createdBy">
+              Made with <i className="fas fa-heart twitchColor"></i> by{" "}
+              <a href="https://seekaplayer.com" target="_blank">
+                Seekaplayer
+              </a>
+            </div>
           </div>
         </div>
       </div>

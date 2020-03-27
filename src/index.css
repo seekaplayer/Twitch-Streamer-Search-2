@@ -1,6 +1,11 @@
-/**
-  Overide Bootstrap CSS
-**/
+a {
+  text-decoration: none;
+  color: #9146ff;
+}
+a:hover {
+  text-decoration: none;
+  color: #7313ff;
+}
 .navbar {
   padding: 1.5rem 1rem;
 }
@@ -41,4 +46,13 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+.twitchColor {
+  color: #9146ff;
+}
+.twitchColor:hover {
+  color: #7313ff;
+}
+.createdBy {
+  font-size: 0.95em;
 }
