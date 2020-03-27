@@ -11,6 +11,7 @@ const SearchResults = ({ user, Alert }) => {
   const TwitchData = async () => {
     if (user) {
       const userData = await TwitchUserSearch(user);
+      //const userID = await TwitchLiveStream(userData.channels._id);
       if (userData) {
         setResults(userData);
         Alert("");
@@ -26,8 +27,6 @@ const SearchResults = ({ user, Alert }) => {
   useEffect(() => {
     TwitchData();
   }, [user]);
-
-  const TwitchStreamData = async () => {};
 
   return (
     <>
