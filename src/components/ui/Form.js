@@ -8,7 +8,7 @@ const Form = ({ InputData, PreventRefresh }) => {
         <div className="col">
           <form onSubmit={PreventRefresh}>
             <Input
-              inputOnChange={InputData}
+              inputOnChange={e => InputData(e.target.value)}
               inputClass="form-control searchInput"
               inputPlaceholder="Search Twitch Streamers"
             />
