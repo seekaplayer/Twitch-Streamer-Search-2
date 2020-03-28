@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
+import _ from 'lodash';
 import Form from "../ui/Form";
 import SearchResults from "./SearchResults";
 import AlertMsg from "../ui/AlertMsg";
@@ -7,12 +8,15 @@ const Search = () => {
   const [user, setUser] = useState("");
   const [alert, setAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+
+  const self = this;
+
   const PreventRefresh = event => {
     event.preventDefault();
   };
-  const InputData = event => {
-    event.preventDefault();
-    const inputUser = event.target.value.replace(/\s/g, "");
+
+  const InputData = value => {
+    const inputUser = value.replace(/\s/g, "");
     setUser(inputUser);
   };
 
@@ -25,10 +29,12 @@ const Search = () => {
     }
   };
 
+  const debounceOnChange = useCallback(_.debounce(InputData, 250), []);
+
   return (
     <>
       {alert ? <AlertMsg alertText={alertMessage} /> : null}
-      <Form InputData={InputData} PreventRefresh={PreventRefresh} />
+      <Form InputData={debounceOnChange} PreventRefresh={PreventRefresh} />
       <SearchResults user={user} Alert={Alert} />
     </>
   );

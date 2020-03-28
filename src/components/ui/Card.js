@@ -10,7 +10,7 @@ const Card = ({ i, display_name, video_banner, isLive }) => {
           alt={display_name}
         />
         <div className="card-body">
-          {display_name} | {isLive && "Live"}
+          {display_name} {isLive && "| Live"}
         </div>
       </div>
     </div>
