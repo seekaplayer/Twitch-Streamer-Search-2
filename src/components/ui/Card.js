@@ -1,19 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const Card = ({ display_name, video_banner }) => {
+const Card = ({ i, display_name, video_banner, isLive }) => {
   return (
-    <div className="col-lg-4 col-md-6 col-sm-12 mb-3">
+    <div key={i} className="col-lg-4 col-md-6 col-sm-12 mb-3">
       <div className="card">
         <img
-          src={
-            video_banner !== null
-              ? video_banner
-              : "https://static-cdn.jtvnw.net/jtv_user_pictures/de4062f1-66b3-49a1-a8b1-6f2105d0e64a-channel_offline_image-1920x1080.png"
-          }
+          src={video_banner ? video_banner : "/images/twichdefaultbg.jpg"}
           className="card-img-top"
           alt={display_name}
         />
-        <div className="card-body">{display_name}</div>
+        <div className="card-body">
+          {display_name} | {isLive && "Live"}
+        </div>
       </div>
     </div>
   );

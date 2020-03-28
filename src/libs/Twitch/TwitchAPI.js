@@ -14,9 +14,9 @@ export const TwitchUserSearch = async user => {
   return data;
 };
 
-export const TwitchLiveStream = async user_id => {
+export const TwitchLiveStream = async userID => {
   const param1 = "streams";
-  const param2 = user_id;
+  const param2 = userID;
   const res = await fetch(`${url}/${param1}/${param2}`, {
     headers: {
       Accept: "application/vnd.twitchtv.v5+json",
