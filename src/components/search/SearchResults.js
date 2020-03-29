@@ -16,17 +16,18 @@ const SearchResults = ({ user, Alert }) => {
       const userData = await TwitchUserSearch(user);
 
       if (userData) {
-
         Alert("");
 
         if (userData.channels.length === 0) {
           Alert("Sorry, that user doesn't exist. Please try again!");
+          setCards([]);
         }
 
         if (userData.channels.length) await getCards(userData.channels);
       }
       setLoading(false);
     } else {
+      setCards([]);
       Alert("");
     }
   };
@@ -40,7 +41,7 @@ const SearchResults = ({ user, Alert }) => {
     return streamData.stream;
   };
 
-  const getCards = async (channels) => {
+  const getCards = async channels => {
     if (!channels.length) return setCards([]);
 
     let cards = [];
@@ -50,24 +51,27 @@ const SearchResults = ({ user, Alert }) => {
 
       const streamData = await TwitchLiveStreamData(result._id);
 
-      cards.push((
+      cards.push(
         <Card
           key={i}
           isLive={streamData}
           display_name={result.display_name}
           video_banner={result.video_banner}
         />
-      ))
+      );
     }
-
     setCards(cards);
-  }
+  };
 
   return (
     <>
       <div className="container mt-3">
         <div className="row">
-          {loading ? <Loader /> : cards}
+          {loading ? (
+            <Loader loaderText={"Search For Streamer...Please Wait!"} />
+          ) : (
+            cards
+          )}
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import _ from 'lodash';
+import _ from "lodash";
 import Form from "../ui/Form";
 import SearchResults from "./SearchResults";
 import AlertMsg from "../ui/AlertMsg";
@@ -14,12 +14,10 @@ const Search = () => {
   const PreventRefresh = event => {
     event.preventDefault();
   };
-
   const InputData = value => {
     const inputUser = value.replace(/\s/g, "");
     setUser(inputUser);
   };
-
   const Alert = m => {
     if (m !== "") {
       setAlert(true);
@@ -29,7 +27,7 @@ const Search = () => {
     }
   };
 
-  const debounceOnChange = useCallback(_.debounce(InputData, 250), []);
+  const debounceOnChange = useCallback(_.debounce(InputData, 500), []);
 
   return (
     <>

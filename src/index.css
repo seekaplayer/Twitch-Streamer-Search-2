@@ -62,3 +62,13 @@ a:hover {
 .loading {
   font-size: 45px;
 }
+.badge-twitch {
+  color: #f0f0ff;
+  background: #9146ff;
+}
+.card-body .badge {
+  padding: 0.75em 1.5em;
+}
+.card-body button {
+  border: none;
+}
