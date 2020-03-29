@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-const Card = ({ i, display_name, video_banner, isLive }) => {
+const Card = ({
+  i,
+  display_name,
+  video_banner,
+  isLive,
+  ChangeToProfile,
+  FullUserDetails
+}) => {
   return (
     <div key={i} className="col-lg-4 col-md-6 col-sm-12 mb-3">
       <div className="card">
@@ -34,10 +41,15 @@ const Card = ({ i, display_name, video_banner, isLive }) => {
           )}
           <hr />
           <div className="text-center">
+            <button
+              onClick={() => ChangeToProfile(FullUserDetails, isLive)}
+              className="badge badge-dark"
+            >
+              View Profile
+            </button>{" "}
             <a href={`https://twitch.tv/${display_name}`} target="_blank">
               <span className="badge badge-dark">View on Twitch</span>
-            </a>{" "}
-            <button className="badge badge-dark">View Profile</button>
+            </a>
           </div>
         </div>
       </div>

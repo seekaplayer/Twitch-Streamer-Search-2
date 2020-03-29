@@ -5,16 +5,20 @@ import {
 } from "../../libs/Twitch/TwitchAPI";
 import Card from "../ui/Card";
 import Loader from "../ui/Loader";
+import Profile from "../profile/Profile";
 
-const SearchResults = ({ user, Alert }) => {
+const SearchResults = ({ user, Alert, RemoveForm }) => {
   const [loading, setLoading] = useState(false);
   const [cards, setCards] = useState([]);
+  const [profile, setProfile] = useState(false);
+  const [profileData, setProfileData] = useState([]);
+  const [profileVideo, setProfileVideo] = useState();
 
   const TwitchData = async () => {
     if (user) {
       setLoading(true);
       const userData = await TwitchUserSearch(user);
-
+      setProfileData(userData.channels);
       if (userData) {
         Alert("");
 
@@ -38,6 +42,7 @@ const SearchResults = ({ user, Alert }) => {
 
   const TwitchLiveStreamData = async userID => {
     const streamData = await TwitchLiveStream(userID);
+
     return streamData.stream;
   };
 
@@ -54,25 +59,43 @@ const SearchResults = ({ user, Alert }) => {
       cards.push(
         <Card
           key={i}
+          ChangeToProfile={ChangeToProfile}
           isLive={streamData}
           display_name={result.display_name}
           video_banner={result.video_banner}
+          FullUserDetails={result}
         />
       );
     }
     setCards(cards);
   };
 
+  const ChangeToProfile = (FullUserDetails, isLive) => {
+    setProfile(true);
+    RemoveForm();
+    setCards([]);
+    setProfileData(FullUserDetails);
+    setProfileVideo(isLive);
+  };
+
   return (
     <>
       <div className="container mt-3">
-        <div className="row">
-          {loading ? (
-            <Loader loaderText={"Search For Streamer...Please Wait!"} />
-          ) : (
-            cards
-          )}
-        </div>
+        {!profile ? (
+          <div className="row">
+            {loading ? (
+              <Loader loaderText={"Search For Streamer...Please Wait!"} />
+            ) : (
+              cards
+            )}
+          </div>
+        ) : (
+          <Profile
+            profileData={profileData}
+            profileVideo={profileVideo}
+            isLive={profileVideo}
+          />
+        )}
       </div>
     </>
   );

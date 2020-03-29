@@ -8,6 +8,7 @@ const Search = () => {
   const [user, setUser] = useState("");
   const [alert, setAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [removeForm, setRemoveForm] = useState(false);
 
   const self = this;
 
@@ -18,6 +19,7 @@ const Search = () => {
     const inputUser = value.replace(/\s/g, "");
     setUser(inputUser);
   };
+
   const Alert = m => {
     if (m !== "") {
       setAlert(true);
@@ -26,14 +28,18 @@ const Search = () => {
       setAlert(false);
     }
   };
-
+  const RemoveForm = () => {
+    setRemoveForm(true);
+  };
   const debounceOnChange = useCallback(_.debounce(InputData, 500), []);
 
   return (
     <>
-      {alert ? <AlertMsg alertText={alertMessage} /> : null}
-      <Form InputData={debounceOnChange} PreventRefresh={PreventRefresh} />
-      <SearchResults user={user} Alert={Alert} />
+      {alert && <AlertMsg alertText={alertMessage} />}
+      {!removeForm && (
+        <Form InputData={debounceOnChange} PreventRefresh={PreventRefresh} />
+      )}
+      <SearchResults user={user} Alert={Alert} RemoveForm={RemoveForm} />
     </>
   );
 };
