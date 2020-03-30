@@ -47,7 +47,7 @@ const Card = ({
             >
               View Profile
             </button>{" "}
-            <a href={`https://twitch.tv/${display_name}`} target="_blank">
+            <a href={FullUserDetails.url} target="_blank">
               <span className="badge badge-dark">View on Twitch</span>
             </a>
           </div>
